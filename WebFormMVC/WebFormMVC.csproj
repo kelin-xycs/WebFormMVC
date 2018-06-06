@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Controller.aspx" />
+    <Content Include="Global.asax" />
     <Content Include="UserControl1.ascx" />
     <Content Include="Web.config" />
     <Content Include="WebForm1.aspx" />
@@ -70,6 +71,9 @@
     </Compile>
     <Compile Include="Controller.aspx.designer.cs">
       <DependentUpon>Controller.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserControl1.ascx.cs">
