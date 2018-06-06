@@ -5,11 +5,12 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+using System.Data;
+
 namespace WebFormMVC
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
-        protected string userControl1;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -19,17 +20,44 @@ namespace WebFormMVC
 
             //  UI 逻辑
 
-            Control uc1 = LoadControl("UserControl1.ascx");
+            gridView.DataSource = FetchPerson();
+            gridView.DataBind();
+            
+        }
 
-            using(System.IO.StringWriter sw = new System.IO.StringWriter())
-            {
-                HtmlTextWriter htmlWriter = new HtmlTextWriter(sw);
-                uc1.RenderControl(htmlWriter);
-                
-                this.userControl1 = sw.ToString();
-            }
-            
-            
+        private DataTable FetchPerson()
+        {
+            DataTable dt = new DataTable();
+
+            dt.Columns.Add("id");
+            dt.Columns.Add("name");
+            dt.Columns.Add("age");
+
+            DataRow dr = dt.NewRow();
+            dr["id"] = "001";
+            dr["name"] = "小刚";
+            dr["age"] = 10;
+            dt.Rows.Add(dr);
+
+            dr = dt.NewRow();
+            dr["id"] = "002";
+            dr["name"] = "小明";
+            dr["age"] = 20;
+            dt.Rows.Add(dr);
+
+            dr = dt.NewRow();
+            dr["id"] = "003";
+            dr["name"] = "小红";
+            dr["age"] = 30;
+            dt.Rows.Add(dr);
+
+            dr = dt.NewRow();
+            dr["id"] = "004";
+            dr["name"] = "小花";
+            dr["age"] = 40;
+            dt.Rows.Add(dr);
+
+            return dt;
         }
     }
 }
